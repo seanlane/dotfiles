@@ -9,5 +9,5 @@ This inspiration for this repo came from here: [Getting Started With Dotfiles](h
 *  `chmod u+x install.sh`
 *  ./install.sh
 
-The changes will then be in place, and you can restart your terminal or enter the following command:
+The changes will then be in place, and you can restart your terminal or enter the following command:  
 `source ~/.bash_profile`
