@@ -14,12 +14,13 @@ function makeLink {
     elif [ -f $TARGET ]
         then
             echo "=== WARNING: File exists - $TARGET"
-            echo "Backing it up"
-            mv -v $TARGET $TARGET.bak
+            echo "Ignoring it"
     fi
 
-    echo "Create Link:"
-    ln -sv $SOURCE $TARGET
+    if [ ! -f $TARGET ]
+        echo "Create Link:"
+        ln -sv $SOURCE $TARGET
+    fi
 }
 
 # Get current dir (so run this script from anywhere)
