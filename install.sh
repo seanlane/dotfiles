@@ -6,8 +6,7 @@ function makeLink {
     FILENAME=$(basename $SOURCE)
     TARGET="$2/$FILENAME"
 
-    if [ -L $TARGET ]
-        then
+    if [ -L $TARGET ]; then
             echo "=== WARNING: Link exists - $TARGET"
             echo "Removing it"
             rm -v $TARGET
@@ -17,7 +16,7 @@ function makeLink {
             echo "Ignoring it"
     fi
 
-    if [ ! -f $TARGET ]
+    if [ ! -f $TARGET ]; then
         echo "Create Link:"
         ln -sv $SOURCE $TARGET
     fi
@@ -36,7 +35,7 @@ find $DOTFILES_DIR/files -maxdepth 1 -type f | while read file; do makeLink $fil
 find $DOTFILES_DIR/files/git -maxdepth 1 -type f | while read file; do makeLink $file $HOME; done;
 
 # Symlinks for the other dofiles
-if [ ! -d "$HOME/.dotfiles" ]; then
+if ![ -d "$HOME/.dotfiles" ]; then
   mkdir -v "$HOME/.dotfiles"
 fi
 
@@ -47,3 +46,9 @@ fi
 
 # Move the rest of the files into ~/.dotfiles, which are then sourced by .bashrc
 find $DOTFILES_DIR/files/others -maxdepth 1 -type f | while read file; do makeLink $file $HOME/.dotfiles; done;
+
+# OS Specific Installation steps
+
+if [ $(uname) == "Darwin" ]; then
+    files/scripts/mac_os_install.sh
+fi
