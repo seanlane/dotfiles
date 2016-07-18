@@ -41,7 +41,7 @@ fi
 
 if [ -f  $HOME/.dotfiles/.local ]; then
     touch $HOME/.dotfiles/.local
-    echo "# This is a file for any settings unique to this machine" > $HOME/.dotfiles/.local
+    echo "# This is a file for any settings unique to this machine" > $HOME/.dotfiles/.local 
 fi
 
 # Move the rest of the files into ~/.dotfiles, which are then sourced by .bashrc
@@ -50,5 +50,7 @@ find $DOTFILES_DIR/files/others -maxdepth 1 -type f | while read file; do makeLi
 # OS Specific Installation steps
 
 if [ $(uname) == "Darwin" ]; then
-    files/scripts/mac_os_install.sh
+    chmod u+x files/scripts/mac_os_install.sh
+    source files/scripts/mac_os_install.sh
+    source files/scripts/mac_os_defaults.sh
 fi

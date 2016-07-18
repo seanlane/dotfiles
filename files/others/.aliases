@@ -3,3 +3,7 @@ alias ld="ls -dl */"   # List in long format, only directories
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
+
+# Aliases for persistent history
+alias phgrep='cat ~/.persistent_history|grep --color'
+alias hgrep='history|grep --color'
