@@ -3,6 +3,9 @@ My .files for a Linux or macOS setup where BASH is being used
 
 This inspiration for this repository came from here: [Getting Started With Dotfiles](https://medium.com/@webprolific/getting-started-with-dotfiles-43c3602fd789)
 
+Other sources include:
+* [Keeping Persistent History in Bash](http://eli.thegreenplace.net/2013/06/11/keeping-persistent-history-in-bash)
+
 ## Installation
 Perform the following steps:  
 *  Clone the repository into a location that it can reside and where you will remember it, or fork your own copy and clone it
