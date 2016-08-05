@@ -35,11 +35,11 @@ find $DOTFILES_DIR/files -maxdepth 1 -type f | while read file; do makeLink $fil
 find $DOTFILES_DIR/files/git -maxdepth 1 -type f | while read file; do makeLink $file $HOME; done;
 
 # Symlinks for the other dofiles
-if ![ -d "$HOME/.dotfiles" ]; then
+if [ ! -d "$HOME/.dotfiles" ]; then
   mkdir -v "$HOME/.dotfiles"
 fi
 
-if [ -f  $HOME/.dotfiles/.local ]; then
+if [ ! -f  $HOME/.dotfiles/.local ]; then
     touch $HOME/.dotfiles/.local
     echo "# This is a file for any settings unique to this machine" > $HOME/.dotfiles/.local 
 fi
