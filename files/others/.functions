@@ -33,7 +33,7 @@ extract() {
   fi
 }
 
-##### Functions for persistent history ####
+# ===== Functions for persistent history =====
 log_bash_persistent_history()
 {
   [[
@@ -55,3 +55,18 @@ run_on_prompt_command()
 }
 
 PROMPT_COMMAND="run_on_prompt_command"
+
+# ===== End Persistent History =====
+
+# Function for adding to PATH without duplicates
+# Source: http://unix.stackexchange.com/a/217629
+
+function pathmunge () {
+        if ! echo "$PATH" | /bin/grep -Eq "(^|:)$1($|:)" ; then
+           if [ "$2" = "after" ] ; then
+              PATH="$PATH:$1"
+           else
+              PATH="$1:$PATH"
+           fi
+        fi
+}
