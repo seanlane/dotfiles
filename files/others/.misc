@@ -1,4 +1,4 @@
 # Place for anything that doesn't fit into .aliases, .env, or .functions
 
 # Give history a timestamp
-HISTTIMEFORMAT="%d/%m/%Y %T "
+HISTTIMEFORMAT="%Y-%m-%d %T "
