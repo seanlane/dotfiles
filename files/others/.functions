@@ -10,7 +10,7 @@ function manpdf() {
 
 # Extra many types of compressed packages
 # Credit: http://nparikh.org/notes/zshrc.txt
-extract() {
+function extract() {
   if [ -f "$1" ]; then
     case "$1" in
       *.tar.bz2)  tar -jxvf "$1"                        ;;
@@ -34,7 +34,7 @@ extract() {
 }
 
 # ===== Functions for persistent history =====
-log_bash_persistent_history()
+function log_bash_persistent_history()
 {
   [[
     $(history 1) =~ ^\ *[0-9]+\ +([^\ ]+\ [^\ ]+)\ +(.*)$
@@ -49,7 +49,7 @@ log_bash_persistent_history()
 }
 
 # Stuff to do on PROMPT_COMMAND
-run_on_prompt_command()
+function run_on_prompt_command()
 {
     log_bash_persistent_history
 }
