@@ -1,3 +1,10 @@
+#
+# ~/.bashrc
+#
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
 # Load the shell dotfiles
 #for DOTFILE in `find $HOME/.dotfiles`;
 #do
