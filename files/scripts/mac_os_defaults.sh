@@ -5,7 +5,7 @@ echo "Setting Mac OS defaults"
 # Set some defaults in Mac OS
 
 ## Finder: show hidden files by default
-defaults write com.apple.finder AppleShowAllFiles -bool true
+defaults write com.apple.finder AppleShowAllFiles -bool NO
 ## Automatically hide and show the Dock
 defaults write com.apple.dock autohide -bool true
 ## Save screenshots to the desktop
