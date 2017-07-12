@@ -52,7 +52,7 @@ function log_bash_persistent_history()
 function run_on_prompt_command()
 {
     log_bash_persistent_history
-    echo -en "$(whoami)@$(hostname) | $(pwd)\a"
+    echo -en "\033]0; $(whoami)@$(hostname) | $(pwd)\a"
 }
 
 PROMPT_COMMAND="run_on_prompt_command"
