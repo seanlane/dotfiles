@@ -8,3 +8,5 @@ set autoindent
 syntax on
 
 :autocmd FileType make set noexpandtab
+
+au BufNewFile,BufRead *.cu set ft=cpp
