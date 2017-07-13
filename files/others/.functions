@@ -71,3 +71,8 @@ function pathmunge () {
            fi
         fi
 }
+
+# Function for colorized diffs with diff-so-fancy
+function cdiff () {
+    git diff --color $1 $2 | diff-so-fancy
+}
