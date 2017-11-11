@@ -5,8 +5,10 @@ else
 	alias ls='ls --color=auto'
 fi
 
-alias l="ls -al"       # List in long format, include dotfiles
-alias ld="ls -dl */"   # List in long format, only directories
+alias l="ls -Al"        # List in long format, include dotfiles
+alias ld="ls -dl */"    # List in long format, only directories
+alias ldh="ls -ld .*/"  # List only hidden directories
+alias lh="ls -ld .*"    # List all hidden files and directories
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
