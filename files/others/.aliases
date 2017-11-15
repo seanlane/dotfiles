@@ -31,5 +31,6 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 alias diff='cdiff'
 
 # Alias to pull all git repos within the current directory
-alias upgit='find . -maxdepth 1 -regex "..+" -type d -exec git --git-dir={}/.git --work-tree=$PWD/{} pull origin master \;'
-alias upgit-status='find . -maxdepth 1 -regex "..+" -type d -exec echo git --git-dir={}/.git --work-tree=$PWD/{} status \;'
+# Use "...*" instead of "..+" for regex to be compatible with macOS
+alias upgit='find . -maxdepth 1 -regex "...*" -type d -exec git --git-dir={}/.git --work-tree=$PWD/{} pull origin master \;'
+alias upgit-status='find . -maxdepth 1 -regex "...*" -type d -exec echo git --git-dir={}/.git --work-tree=$PWD/{} status \;'
