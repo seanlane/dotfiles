@@ -1,8 +1,9 @@
 " Source for much of this: https://github.com/jarolrod/vim-python-ide
 set nocompatible
 filetype off
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+"call vundle#rc()
+call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
@@ -22,6 +23,7 @@ Plugin 'vim-airline/vim-airline-themes'     " Themes for airline
 Plugin 'Valloric/YouCompleteMe'             " Autocomplete plugin
 
 " Now we can turn our filetype functionality back on
+call vundle#end()            " required
 filetype plugin indent on
 colorscheme gruvbox						" set vim colorscheme
 

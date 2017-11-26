@@ -76,3 +76,8 @@ function pathmunge () {
 function cdiff () {
     git diff --color $1 $2 | diff-so-fancy
 }
+
+# Function for logbook writing
+function lb() {
+    vim ~/Dropbox/Logbook/$(date '+%Y-%m-%d').md
+}
