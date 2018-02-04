@@ -37,3 +37,10 @@ alias upgit-status='find . -maxdepth 1 -regex "...*" -type d -exec echo git --gi
 
 # Alias to force tmux to use 256 colors
 alias tmux='tmux -2'
+
+# Find external IP address
+alias wanip='dig +short myip.opendns.com @resolver1.opendns.com'
+
+# Commands for writing in personal and work journal
+alias wjrnl='~/Code/Personal/journal/jrnl.py --work ~/Dropbox/Logbook'
+alias pjrnl='~/Code/Personal/journal/jrnl.py ~/Code/Personal/journal/entries'

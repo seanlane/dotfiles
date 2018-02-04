@@ -41,6 +41,7 @@ set t_Co=256
 set encoding=utf-8
 set guifont=Hack\ for\ Powerline "make sure to escape the spaces in the name properly
 set background=dark
+set backspace=2 " make backspace work like most other programs
 syntax on
 
 ":autocmd FileType make set noexpandtab
