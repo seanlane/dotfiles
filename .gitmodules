@@ -3,4 +3,5 @@
 	url = https://github.com/scrooloose/nerdtree.git
 [submodule "files/vim/.vim/pack/plugins/start/vim-colorschemes"]
 	path = files/vim/.vim/pack/plugins/start/vim-colorschemes
-	url = https://github.com/flazz/vim-colorschemes.git
+    url = https://github.com/flazz/vim-colorschemes.git
+    ignore = dirty
