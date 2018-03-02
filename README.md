@@ -8,7 +8,8 @@ Other sources include:
 
 ## Installation
 Perform the following steps:  
-*  Clone the repository into a location that it can reside and where you will remember it, or fork your own copy and clone it
+*  Clone the repository into a location that it can reside and where you will remember it, or fork your own copy and clone it:
+  * `git clone --recursive https://github.com/seanlane/dotfiles.git`
 *  `cd dotfiles`
 *  `chmod u+x install.sh`
 *  `./install.sh`
