@@ -8,14 +8,13 @@ if ! [ $(command -v brew) ] ; then
     brew install brew-cask
     brew tap caskroom/versions
 
-
     # Install stuff 
     brew install git hub wget exercism \
         node nvm rbenv python python3 sbt scala sqlite postgresql \
-        dinghy docker docker-compose docker-machine git  wget
+        dinghy docker docker-compose docker-machine git wget
 
-    brew cask install firefox font-hack gimp google-chrome intellij-idea-ce \
-        iterm2-beta java pycharm-ce sublime-text3 teamviewer virtualbox vlc 
+    brew cask install firefox font-hack gimp google-chrome \
+        iterm2-beta sublime-text3 virtualbox vlc 
 else
     echo "Brew installed, skipping program installation"
 fi
