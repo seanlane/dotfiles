@@ -69,8 +69,8 @@ if [ ! -f  $HOME/.dotfiles/.local ]; then
     echo "# This is a file for any settings unique to this machine" > $HOME/.dotfiles/.local 
 fi
 
-if [ ! -L  $HOME/.dotfiles/.bin ]; then
-    ln -sv $DOTFILES_DIR/files/bin $HOME/.dotfiles/.bin
+if [ ! -L  $HOME/.dotfiles/bin ]; then
+    ln -sv $DOTFILES_DIR/files/bin $HOME/.dotfiles/bin
 fi
 
 find $DOTFILES_DIR/files/system -maxdepth 1 -type f | while read file; do makeLink $file $HOME/.dotfiles; done;
