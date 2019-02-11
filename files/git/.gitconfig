@@ -9,3 +9,8 @@
     excludesfile = ~/.gitignore_global
     editor = vim
 	autocrlf = input
+
+[push]
+	default = current
+[icdiff]
+	options = --highlight --line-numbers

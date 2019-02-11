@@ -14,6 +14,9 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 
+# Alias for exa
+alias e="exa -al"
+
 # Add colors to any grep calls
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'

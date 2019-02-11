@@ -18,6 +18,8 @@
 [ -f $HOME/.dotfiles/.env ] && source $HOME/.dotfiles/.env;
 [ -f $HOME/.dotfiles/.local ] && source $HOME/.dotfiles/.local;
 
+# Add dotfiles/bin to path
+[ -L $HOME/.dotfiles/bin ] && pathmunge $HOME/.dotfiles/bin after
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
