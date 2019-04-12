@@ -1,0 +1,51 @@
+#!/usr/bin/env python
+from pathlib import Path
+
+import argparse
+import subprocess
+import os
+
+
+def form_command(dir_in, username_in, weeks_in):
+    return 'cd {} '.format(dir_in) + \
+           '&& git log --branches=* --author="{}" '.format(username_in) + \
+           '--after="{} weeks ago" --oneline --reverse'.format(weeks_in)
+
+
+parser = argparse.ArgumentParser(
+    description='Create a report on git commits for a user for multiple repos')
+parser.add_argument('--base', default=str(Path.home() / 'Code'), help='Base directory to search')
+parser.add_argument('--user', default='Sean Lane', help='User name to search for')
+parser.add_argument('--weeks', type=int, default=1,
+                    help='Number of weeks in the past for which to get commits ')
+args = parser.parse_args()
+
+base = Path(args.base).expanduser()
+username = args.user
+num_weeks = args.weeks
+
+if num_weeks < 1:
+    parser.error("Can't have nonpositive values for weeks")
+
+repos = []
+paths = [base]
+while paths:
+    directory = paths.pop()
+    if (directory / '.git').exists():
+        repos.append(directory)
+    else:
+        paths.extend([x for x in directory.iterdir() if x.is_dir()])
+
+for directory in repos:
+    command = form_command(directory, username, num_weeks)
+    status, commits = subprocess.getstatusoutput(command)
+    if(
+        not status and
+        len(commits) > 0 and
+        "Not a directory" not in commits and
+        "Not a git repository" not in commits
+    ):
+        print(os.path.relpath(directory, base))
+        # Remove hash
+        commits = [' '.join(['-'] + commit.split(' ')[1:]) for commit in commits.split('\n')]
+        print('\n'.join(commits) + '\n')
