@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 from pathlib import Path
 
 import argparse
@@ -6,23 +6,31 @@ import subprocess
 import os
 
 
-def form_command(dir_in, username_in, weeks_in):
-    return 'cd {} '.format(dir_in) + \
+def form_command(dir_in, username_in, weeks_in, detailed=False):
+    cmd = 'cd {} '.format(dir_in) + \
            '&& git log --branches=* --author="{}" '.format(username_in) + \
-           '--after="{} weeks ago" --oneline --reverse'.format(weeks_in)
+           '--after="{} weeks ago" --reverse '.format(weeks_in)
+    if detailed:
+        cmd += '--pretty=format:"%h %ad%x09%s" --date=short'
+    else:
+        cmd += '--oneline'
+    return cmd
 
 
 parser = argparse.ArgumentParser(
     description='Create a report on git commits for a user for multiple repos')
-parser.add_argument('--base', default=str(Path.home() / 'Code'), help='Base directory to search')
-parser.add_argument('--user', default='Sean Lane', help='User name to search for')
-parser.add_argument('--weeks', type=int, default=1,
+parser.add_argument('-b', '--base', default=str(Path.home() / 'Code'),
+                    help='Base directory to search')
+parser.add_argument('-u', '--user', default='Sean Lane', help='User name to search for')
+parser.add_argument('-d', '--dates', action='store_true', help='Show dates')
+parser.add_argument('-w', '--weeks', type=int, default=1,
                     help='Number of weeks in the past for which to get commits ')
 args = parser.parse_args()
 
 base = Path(args.base).expanduser()
 username = args.user
 num_weeks = args.weeks
+dates = args.dates
 
 if num_weeks < 1:
     parser.error("Can't have nonpositive values for weeks")
@@ -37,7 +45,7 @@ while paths:
         paths.extend([x for x in directory.iterdir() if x.is_dir()])
 
 for directory in repos:
-    command = form_command(directory, username, num_weeks)
+    command = form_command(directory, username, num_weeks, detailed=dates)
     status, commits = subprocess.getstatusoutput(command)
     if(
         not status and
@@ -47,5 +55,5 @@ for directory in repos:
     ):
         print(os.path.relpath(directory, base))
         # Remove hash
-        commits = [' '.join(['-'] + commit.split(' ')[1:]) for commit in commits.split('\n')]
+        commits = ['- ' + commit for commit in commits.split('\n')]
         print('\n'.join(commits) + '\n')
