@@ -20,7 +20,8 @@ function makeLink {
     elif [ -f $TARGET ]
         then
             red "=== WARNING: File exists - $TARGET"
-            yellow "Ignoring it"
+            yellow "Moving it to ${TARGET}.bak"
+	    mv "${TARGET}" "${TARGET}.bak"
     fi
 
     if [ ! -f $TARGET ]; then
@@ -57,7 +58,7 @@ DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 # Symlinks for files that reside in the home directory
 find $DOTFILES_DIR/files/git -maxdepth 1 -type f | while read file; do makeLink $file $HOME; done;
 find $DOTFILES_DIR/files/runcom -maxdepth 1 -type f | while read file; do makeLink $file $HOME; done;
-find $DOTFILES_DIR/files/vim ! -path $DOTFILES_DIR/files/vim ! -name .DS_Store -maxdepth 1 | while read file; do makeLink $file $HOME; done;
+find $DOTFILES_DIR/files/vim -maxdepth 1 ! -path $DOTFILES_DIR/files/vim ! -name .DS_Store | while read file; do makeLink $file $HOME; done;
 
 # Symlinks for the other dofiles
 if [ ! -d "$HOME/.dotfiles" ]; then
@@ -79,9 +80,9 @@ find $DOTFILES_DIR/files/system -maxdepth 1 -type f | while read file; do makeLi
 
 if [ $(uname) == "Darwin" ]; then
     blue "Detected macOS, running specific scripts"
-    chmod u+x install_scripts/mac_os_install.sh
-    source install_scripts/mac_os_install.sh
-    source install_scripts/mac_os_defaults.sh
+    chmod u+x scripts/mac_os_install.sh
+    source scripts/mac_os_install.sh
+    source scripts/mac_os_defaults.sh
 fi
 
 green "Finished installation of dotfiles"
