@@ -20,4 +20,4 @@
 	process = git-lfs filter-process
 	required = true
 [alias]
-	lg = log --graph --oneline --decorate --all
+	lg = log --graph --pretty=format:'%C(yellow)%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --abbrev-commit --date=local
