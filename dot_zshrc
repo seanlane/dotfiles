@@ -1,0 +1,5 @@
+#
+# Read after .zprofile for interactive shells
+#
+
+PATH=$PATH:/Library/TeX/texbin
