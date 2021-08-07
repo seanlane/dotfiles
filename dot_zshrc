@@ -14,6 +14,10 @@ function pathmunge () {
     fi
 }
 
+# Save history between sessions
+HISTSIZE=10000
+SAVEHIST=$HISTSIZE
+HISTFILE=~/.zsh_history
 
 export AUTO_TITLE_SCREENS="NO"
 
