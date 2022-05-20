@@ -45,8 +45,8 @@ alias zshconfig='vim ~/.zshrc'
 alias ..='cd ..'
 alias ...='cd ../../'
 alias ....='cd ../../../'
-
-alias l='ls -al --color'
+alias wanip='dig +short myip.opendns.com @resolver1.opendns.com'
+alias l='ls -al'
 
 # Move cursor to the end of line when searching
 # https://old.reddit.com/r/zsh/comments/d64y0s/how_to_put_cursor_at_end_of_line_when_displaying/f0rohrd/
@@ -65,3 +65,4 @@ bindkey "^[[H"  beginning-of-line
 bindkey "^[[F"  end-of-line
 bindkey "^[[4~" end-of-line
 
+source ~/.dotfiles/misc
