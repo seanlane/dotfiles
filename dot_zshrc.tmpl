@@ -8,13 +8,11 @@ function pathmunge () {
     fi
 }
 
-
-{{ if and (eq .chezmoi.os "darwin") (eq .chezmoi.hostname .nbrHostname) -}}
-VAULTED_PROMPT=""
-
-export PROMPT="%F{red}%m%f ${VAULTED_PROMPT}%F{cyan}%~%f %F{green}$%f "
-
-{{ end -}}
+# Load a local config file for stuff not to keep in Git.
+# Check if the file exists before sourcing it
+if [ -f "$HOME/.zshrc.local" ]; then
+    source "$HOME/.zshrc.local"
+fi
 
 alias nanonow='date +%s000000000'
 
@@ -23,3 +21,29 @@ alias ...='cd ../../'
 alias ....='cd ../../../'
 
 alias l='ls -al --color'
+
+# Move cursor to the end of line when searching
+# https://old.reddit.com/r/zsh/comments/d64y0s/how_to_put_cursor_at_end_of_line_when_displaying/f0rohrd/
+autoload -Uz up-line-or-beginning-search
+autoload -Uz down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+
+# ZSH Key bindings
+bindkey -e
+bindkey "^[[A"  up-line-or-beginning-search
+bindkey "^[[B"  down-line-or-beginning-search
+bindkey "^[[3~" delete-char
+bindkey "^[[1~" beginning-of-line
+bindkey "^[[H"  beginning-of-line
+bindkey "^[[F"  end-of-line
+bindkey "^[[4~" end-of-line
+
+# Save history between sessions
+HISTSIZE=10000
+SAVEHIST=$HISTSIZE
+HISTFILE=~/.zsh_history
+setopt share_history
+setopt append_history
+setopt incappendhistory
+setopt HIST_IGNORE_SPACE
