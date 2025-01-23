@@ -1,6 +1,7 @@
 packages:
   darwin:
     brews:
+    - 'croc'
     - 'htop'
     - 'tmux'
     casks:

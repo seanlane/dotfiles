@@ -1,0 +1,25 @@
+function pathmunge () {
+    if ! echo "$PATH" | grep -Eq "(^|:)$1($|:)" ; then
+        if [ "$2" = "after" ] ; then
+            PATH="$PATH:$1"
+        else
+            PATH="$1:$PATH"
+        fi
+    fi
+}
+
+
+{{ if and (eq .chezmoi.os "darwin") (eq .chezmoi.hostname .nbrHostname) -}}
+VAULTED_PROMPT=""
+
+export PROMPT="%F{red}%m%f ${VAULTED_PROMPT}%F{cyan}%~%f %F{green}$%f "
+
+{{ end -}}
+
+alias nanonow='date +%s000000000'
+
+alias ..='cd ..'
+alias ...='cd ../../'
+alias ....='cd ../../../'
+
+alias l='ls -al --color'

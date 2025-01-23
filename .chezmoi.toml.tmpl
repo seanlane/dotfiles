@@ -1,0 +1,5 @@
+{{- $gitEmail := promptStringOnce . "gitEmail" "Email address for global Git config" -}}
+
+[data]
+    gitEmail = {{ $gitEmail | quote }}
+    nbrHostname = "sean-nbr-mbp"
