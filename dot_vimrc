@@ -1,0 +1,12 @@
+"=====================================================
+"" General settings
+"=====================================================
+set number
+set tabstop=4
+set softtabstop=4
+set expandtab
+set showmatch
+set autoindent
+set encoding=utf-8
+set backspace=2 " make backspace work like most other programs
+syntax on
