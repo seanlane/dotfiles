@@ -1,0 +1,9 @@
+packages:
+  darwin:
+    brews:
+    - 'htop'
+    casks:
+    - 'signal'
+    - 'slack'
+    - 'visual-studio-code'
+    - 'firefox'
