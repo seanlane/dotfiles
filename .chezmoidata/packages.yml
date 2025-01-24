@@ -1,4 +1,7 @@
 packages:
+  amzn:
+    - 'gcc'
+    - 'git'
   darwin:
     brews:
     - 'asdf'

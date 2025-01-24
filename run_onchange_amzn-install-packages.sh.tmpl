@@ -1,0 +1,9 @@
+{{ if (and (eq .chezmoi.os "linux") (eq .chezmoi.osRelease.id "amzn")) -}}
+#!/bin/bash
+
+sudo dnf install -y \
+{{ range .packages.amzn -}}
+{{ . | quote }} \
+{{ end -}}
+
+{{ end -}}
