@@ -23,6 +23,7 @@ packages:
     - 'sqlite'
     - 'stress-ng'
     - 'stripe'
+    - 'thrift'
     - 'tmux'
     - 'tree'
     - 'uv'
