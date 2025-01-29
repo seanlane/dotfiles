@@ -16,6 +16,7 @@ packages:
     - 'htop'
     - 'jq'
     - 'libomp'
+    - 'llvm'
     - 'ripgrep'
     - 'sops'
     - 'sqlite'
